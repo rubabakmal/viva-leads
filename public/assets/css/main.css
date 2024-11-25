@@ -158,20 +158,25 @@
 
 /* How It Works Section */
 .how-it-works {
-    background-color: #33a046;
+    background-color: #4c9a2a;
     color: white;
     padding: 100px 20px;
     height: 400px;
+    font-family: "Red Hat Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 .how-it-works .label-box {
-    background-color: #207d26;
+    background-color: #75cb20;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
     color: #e0ffdc;
     text-transform: uppercase;
+    margin-bottom: 1.5rem;
 }
 .how-it-works h3 {
     font-size: 36px;
@@ -191,9 +196,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
     position: relative;
-    top: -110px;
+    /* top: -110px; */
 }
-
+.info-box .solar {
+    position: relative;
+}
 /* Individual Info Box Styling */
 .info-box {
     background-size: cover;
@@ -203,14 +210,34 @@
     color: white;
     padding: 20px;
     margin: 10px;
-    width: 30%;
+    /* width: 30%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     height: 250px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+.title {
+    position: relative;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* Add the border using ::before */
+.title::before {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Distance from the title text */
+    left: 0;
+    width: 3rem; /* Length of the line */
+    height: 2px; /* Thickness of the line */
+    background-color: white; /* Color of the line */
 }
 
 /* Dark Overlay on Info Box */
@@ -219,10 +246,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
-    border-radius: 10px;
+    z-index: 1;
+    border-radius: inherit; /* Ensures the overlay matches the card's rounded corners */
+    pointer-events: none; /* Prevent overlay from interfering with interactions */
 }
 
 .info-box h3,
@@ -234,7 +263,7 @@
 .info-box h3 {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
+    /* margin-bottom: 105px; */
     display: flex;
     align-items: center;
 }
@@ -254,15 +283,19 @@
 
 /* Background Images for Info Boxes */
 .info-box.roofing {
-    background-image: url("roofing.jpg"); /* Replace with actual image */
+    background-image: url("../imgs/roofing.jpg"); /* Replace with actual image */
+    position: relative;
+    z-index: 10;
 }
 .info-box.solar {
-    background-image: url("solar.jpg"); /* Replace with actual image */
+    background-image: url("../imgs/solar.jpg");
 }
 .info-box.windows {
-    background-image: url("windows.jpg"); /* Replace with actual image */
+    background-image: url("../imgs/windows.jpg"); /* Replace with actual image */
 }
-
+.how-it-works .card {
+    border-color: transparent;
+}
 /* Responsive Adjustments */
 @media (max-width: 767px) {
     .info-box {
@@ -271,5 +304,26 @@
     }
     .how-it-works .row {
         flex-direction: column;
+    }
+    .info-box-container {
+        flex-direction: column;
+    }
+    .how-it-works {
+        height: 580px;
+        font-family: "Red Hat Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+    .info-box-container {
+        padding: 30px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+        position: relative;
+        top: -110px;
+    }
+    .info-box {
+        margin: 0;
+        margin-bottom: 12px;
     }
 }
