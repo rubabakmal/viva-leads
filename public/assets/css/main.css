@@ -1,0 +1,275 @@
+/* Reset styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #33a046;
+    color: white;
+    font-size: 14px;
+    padding: 5px 0;
+}
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Navbar */
+.navbar {
+    padding: 10px 20px;
+    /* position: fixed;
+    width: 100%;
+    z-index: 10; */
+}
+.navbar-brand img {
+    height: 50px;
+}
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 15px;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    color: #33a046;
+}
+.navbar-text {
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background-image: url("../imgs/bg.jpg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    min-height: 735px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 5rem;
+}
+
+/* Content Box */
+.content-box {
+    background-color: rgba(240, 246, 234, 0.7);
+    padding: 80px;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 50px;
+    margin-bottom: 13rem !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.content-box h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    font-family: "Radio Canada Big", serif;
+    font-weight: bold;
+}
+
+/* Service Icons */
+.service-icon {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-items: center;
+    margin-top: 20px;
+}
+.service-icon a {
+    width: 100%;
+    padding: 15px 10px;
+    background-color: #fff;
+    color: #33a046;
+    border: 2px solid #33a046;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.service-icon a i {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.service-icon a:hover {
+    background-color: #33a046;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .navbar-nav .nav-link {
+        margin: 0 10px;
+    }
+    .navbar-text {
+        font-size: 12px;
+    }
+}
+@media (max-width: 767px) {
+    .hero {
+        justify-content: center;
+        padding: 20px;
+        min-height: 500px;
+    }
+    .content-box {
+        margin: 0 20px;
+        max-width: 100%;
+    }
+    .content-box h1 {
+        font-size: 24px;
+    }
+    .service-icon {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .service-icon a {
+        font-size: 12px;
+    }
+    .navbar-collapse {
+        justify-content: center;
+    }
+    .navbar-text {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* How It Works Section */
+.how-it-works {
+    background-color: #33a046;
+    color: white;
+    padding: 100px 20px;
+    height: 400px;
+}
+.how-it-works .label-box {
+    background-color: #207d26;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #e0ffdc;
+    text-transform: uppercase;
+}
+.how-it-works h3 {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.how-it-works p {
+    font-size: 18px;
+    color: #e0ffdc;
+}
+
+/* Info Box Container */
+.info-box-container {
+    padding: 30px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    position: relative;
+    top: -110px;
+}
+
+/* Individual Info Box Styling */
+.info-box {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Overlay on Info Box */
+.info-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    border-radius: 10px;
+}
+
+.info-box h3,
+.info-box p {
+    position: relative;
+    z-index: 1;
+}
+
+.info-box h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.info-box h3 i {
+    background-color: #33a046;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.info-box p {
+    font-size: 16px;
+    color: #e0ffdc;
+    margin: 0;
+}
+
+/* Background Images for Info Boxes */
+.info-box.roofing {
+    background-image: url("roofing.jpg"); /* Replace with actual image */
+}
+.info-box.solar {
+    background-image: url("solar.jpg"); /* Replace with actual image */
+}
+.info-box.windows {
+    background-image: url("windows.jpg"); /* Replace with actual image */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .info-box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .how-it-works .row {
+        flex-direction: column;
+    }
+}
