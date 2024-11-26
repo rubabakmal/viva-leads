@@ -5,10 +5,12 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
+body {
+    background-color: white;
+}
 /* Container */
 .container {
-    max-width: 1200px;
+    max-width: 1355px !important;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -68,7 +70,7 @@
 /* Content Box */
 .content-box {
     background-color: rgba(240, 246, 234, 0.7);
-    padding: 80px;
+    padding: 50px;
     border-radius: 10px;
     max-width: 800px;
     text-align: center;
@@ -78,8 +80,8 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 .content-box h1 {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 400;
     text-align: left;
     color: #333;
     margin-bottom: 30px;
@@ -101,13 +103,21 @@
     padding: 15px 10px;
     background-color: #fff;
     color: #33a046;
-    border: 2px solid #33a046;
+    border: 1px solid #33a046;
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
     font-size: 14px;
     text-decoration: none;
     transition: all 0.3s ease;
+}
+
+.service-icon i {
+    color: #6ac70d;
+}
+
+.service-icon i:hover {
+    color: white;
 }
 .service-icon a i {
     display: block;
@@ -177,6 +187,19 @@
     color: #e0ffdc;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
+}
+
+.label-box {
+    background-color: #75cb20;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #e0ffdc;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
 }
 .how-it-works h3 {
     font-size: 36px;
@@ -296,7 +319,39 @@
 .how-it-works .card {
     border-color: transparent;
 }
-/* Responsive Adjustments */
+img {
+    width: 100%;
+}
+.expert-services {
+    margin-top: 18rem;
+}
+
+.expert-content {
+    font-family: "Red Hat Display";
+    font-size: 16px;
+    font-weight: 400;
+    color: #606060;
+    line-height: 30px;
+    padding-top: 2rem;
+}
+.content {
+    padding-top: 3rem;
+    padding-left: 2.3rem;
+}
+.expert-services h2 {
+    font-weight: bold;
+    position: relative;
+}
+
+.expert-services .heading::before {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Distance from the title text */
+    left: 0;
+    width: 3rem; /* Length of the line */
+    height: 4px; /* Thickness of the line */
+    background-color: #8ed550; /* Color of the line */
+}
 @media (max-width: 767px) {
     .info-box {
         width: 100%;
@@ -325,5 +380,217 @@
     .info-box {
         margin: 0;
         margin-bottom: 12px;
+    }
+
+    .expert-services {
+        margin-top: 50rem;
+    }
+
+    .image-container {
+        order: 2; /* Move image to second */
+    }
+
+    .whole-text {
+        order: 1; /* Move text to first */
+    }
+    .content {
+        padding-top: 1px;
+    }
+}
+
+/* Contact Section Styling */
+.contact-section {
+    padding: 50px 0;
+    background-color: white; /* Light background */
+}
+
+/* Label Box */
+.label-box {
+    display: inline-block;
+    background-color: #63c132; /* Green background */
+    color: white;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+/* Heading */
+.heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.contact-form .form-control {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+    width: 100%;
+}
+
+.contact-form textarea.form-control {
+    resize: none; /* Disable resizing */
+}
+
+/* Submit Button */
+.btn-primary {
+    background-color: #4c9a2a;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Radio Canada Big", serif;
+    font-weight: 400;
+}
+
+.btn-primary:hover {
+    background-color: #4c9a2a;
+}
+
+/* Contact Info Styling */
+.contact-info {
+    background-color: #f2f6fe;
+    padding: 30px;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.contact-info h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.contact-info ul li i {
+    color: #63c132; /* Icon green color */
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .contact-info {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-section .row {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        margin-top: 20px;
+    }
+}
+/* General Section Styling */
+.no-padding.bg-color.text-light {
+    padding: 50px 0;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Feature Box Styling */
+.feature-box {
+    position: relative;
+    text-align: left;
+    padding: 70px 15px;
+
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.feature-box .text {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.feature-box h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Icon Inside the Feature Box */
+.feature-box .i-boxed {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    background-color: #63c132; /* Icon background color */
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Background Watermark Icon */
+.feature-box .wm {
+    font-size: 150px;
+    color: rgba(255, 255, 255, 0.1); /* Light transparent icon */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none; /* Prevent interaction with the watermark */
+}
+
+/* Icon Hover Effect */
+.feature-box:hover .i-boxed {
+    background-color: #fff; /* Invert the icon background */
+    color: #63c132; /* Change icon color to green */
+}
+.feature-box {
+    box-shadow: 8px 0 15px rgba(0, 0, 0, 0.2); /* Right-side shadow */
+}
+
+.feature-box:hover {
+    box-shadow: 12px 0 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .feature-box {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .feature-box .wm {
+        font-size: 100px; /* Adjust background icon size for small screens */
+    }
+    .feature-box h4 {
+        font-size: 16px;
+    }
+    .feature-box .text {
+        font-size: 13px;
     }
 }

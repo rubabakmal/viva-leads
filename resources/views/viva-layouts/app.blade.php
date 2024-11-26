@@ -15,6 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+        
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 </head>
 
