@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
 });
-
+Route::get('services', [ServiceController::class, 'index'])->name('services');
+Route::get('adminservices', [ServiceController::class, 'show'])->name('adminservices');
 Route::get('/dashboard', function () {
     return view('admindashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -451,10 +451,15 @@ img {
     transition: all 0.3s ease;
     font-family: "Radio Canada Big", serif;
     font-weight: 400;
+    width: 20%;
 }
 
 .btn-primary:hover {
     background-color: #4c9a2a;
+}
+.btn-primary:focus {
+    background-color: #4c9a2a;
+    border-color: #4c9a2a;
 }
 
 /* Contact Info Styling */
