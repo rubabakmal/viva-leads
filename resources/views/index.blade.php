@@ -22,7 +22,6 @@
         </div>
     </section>
 
-
     <section class="how-it-works">
         <div class="container">
             <div class="row">
@@ -43,7 +42,7 @@
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="card info-box roofing">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Roofing Services</h3>
                             <p>Protect your home with our top-notch roofing services. We use high-quality materials and
                                 skilled
@@ -53,7 +52,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card info-box solar">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Solar Panel Installation</h3>
                             <p>Go green with our solar panel installation services. Save on energy bills and reduce your
                                 carbon
@@ -63,7 +62,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card info-box windows">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Windows</h3>
                             <p>Enhance your home’s energy efficiency and curb appeal with our window replacement services.
                                 Choose from a variety of styles and materials to fit your needs.</p>
@@ -230,8 +229,4 @@
             </div>
         </div>
     </section>
-
-
-
-    <!-- CSS for Styling -->
 @endsection
