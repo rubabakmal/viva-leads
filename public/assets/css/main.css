@@ -24,7 +24,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 5rem;
+    padding-top: 7rem;
     margin-top: 6.5rem;
 }
 
@@ -61,11 +61,11 @@ body {
 }
 .service-icon a {
     width: 100%;
-    padding: 15px 10px;
-    background-color: #fff;
+    padding: 25px 10px;
+    background-color: #f0f5e9;
     color: #33a046;
     border: 1px solid #33a046;
-    border-radius: 8px;
+    border-radius: 5px;
     text-align: center;
     font-weight: 500;
     font-size: 14px;
