@@ -61,6 +61,11 @@
         .nav-item {
             margin-top: 10px;
         }
+
+        .d-flex.align-items-center button {
+            margin: 0 5px;
+            /* Adjust spacing between buttons */
+        }
     </style>
 </head>
 
@@ -68,16 +73,9 @@
 
 
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-
-
-
 
         @include('admin-layouts.sidebar')
-
-
         <div class="content">
-
 
             @include('admin-layouts.header')
 

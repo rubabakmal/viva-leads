@@ -21,10 +21,12 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="nav-item nav-link active"><i
+                    class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Services</a>
+            <a href="{{ route('adminservices.index') }}" class="nav-item nav-link "><i
+                    class="fa fa-tachometer-alt me-2"></i>Services</a>
         </div>
     </nav>
 </div>

@@ -1,4 +1,8 @@
  <!-- Top Bar -->
+ @php
+     $services = App\Models\Service::where('status', 'active')->get(); // Fetch only active services
+
+ @endphp
  <div class="top-bar" id="topBar">
      <div class="container d-flex justify-content-between align-items-center">
          <div class="topbar-widget tb-social">
@@ -33,14 +37,16 @@
                      <li class="nav-item dropdown">
                          <a class="nav-link" href="#">Services</a>
                          <ul class="dropdown-menu">
-                             <li><a href="#">Roofing</a></li>
-                             <li><a href="#">Solar</a></li>
-                             <li><a href="#">Windows</a></li>
-                             <li><a href="#">Bathroom</a></li>
-                             <li><a href="#">Kitchen</a></li>
-                             <li><a href="#">Motor Vehicle Accident</a></li>
+                             @foreach ($services as $service)
+                                 <li>
+                                     <a
+                                         href="{{ route('services.show', $service->id) }}">{{ $service->service_name }}</a>
+                                 </li>
+                             @endforeach
                          </ul>
                      </li>
+
+
 
                      <li class="nav-item"><span class="dot"></span></li>
                      <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
