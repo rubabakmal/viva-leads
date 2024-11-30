@@ -67,11 +67,26 @@
 <body>
 
 
-    @include('admin-layouts.sidebar')
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
 
-    <div class="main">
-        @yield('content')
+
+
+
+        @include('admin-layouts.sidebar')
+
+
+        <div class="content">
+
+
+            @include('admin-layouts.header')
+
+            @yield('content')
+        </div>
+
+
     </div>
+
 
 
     <!-- JavaScript Libraries -->
