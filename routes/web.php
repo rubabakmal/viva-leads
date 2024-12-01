@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
-use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', function () {
@@ -11,12 +12,11 @@ Route::get('/', function () {
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
 Route::get('services/{id}', [ServiceController::class, 'showService'])->name('services.show');
+Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
 
-
-// Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-    // Admin Services Routes
+
     Route::prefix('adminservices')->name('adminservices.')->group(function () {
         Route::get('/', [ServiceController::class, 'show'])->name('index'); // adminservices.index
         Route::post('/store', [ServiceController::class, 'store'])->name('store');
