@@ -6,6 +6,7 @@
 }
 body {
     background-color: white;
+    overflow-x: hidden;
 }
 
 /* Container */
@@ -1057,5 +1058,8 @@ img {
     .hero {
         padding: 1px 0 !important;
         margin-top: 4.5rem;
+    }
+    .btn-primary {
+        width: 100%;
     }
 }
