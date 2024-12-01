@@ -8,12 +8,12 @@ use App\Http\Controllers\ServiceController;
 // Public Routes
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
+
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
 Route::get('services/{id}', [ServiceController::class, 'showService'])->name('services.show');
 Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
-
 Route::middleware('auth')->group(function () {
 
 

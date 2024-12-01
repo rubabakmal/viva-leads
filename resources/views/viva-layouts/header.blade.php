@@ -32,7 +32,9 @@
              </div>
              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                  <ul class="navbar-nav">
-                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                     <li class="nav-item">
+                         <a class="nav-link active" href="{{ route('index') }}">Home</a>
+                     </li>
                      <li class="nav-item"><span class="dot"></span></li>
                      <li class="nav-item dropdown">
                          <a class="nav-link" href="#">Services</a>
@@ -49,7 +51,7 @@
 
 
                      <li class="nav-item"><span class="dot"></span></li>
-                     <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                     <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
                      <li class="nav-item">
                          <span class="navbar-text d-flex d-lg-none">
                              <i class="fa-solid fa-phone me-3 mt-3"></i>

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
+
+   
     public function sendEmail(Request $request)
     {
         $emailEntry = Email::create($request->only(['first_name', 'last_name', 'email', 'phone', 'message']));
