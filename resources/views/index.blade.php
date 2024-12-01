@@ -1,6 +1,10 @@
 @extends('viva-layouts.app')
 @section('content')
-    <!-- Hero Section -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <section class="hero">
         <div class="col-md-6">
 
@@ -81,7 +85,7 @@
             </div>
 
             <div class="row whole-text" style="background-size: cover;">
-                <div class="container inner-padding" style="background-size: cover;">
+                <div class="container" style="background-size: cover;">
                     <div class="content" data-animation="fadeInRight" data-delay="200" style="background-size: cover; ">
                         <div class="label-box">What we do?</div>
                         <h2 class="heading">
@@ -119,32 +123,30 @@
                     <div class="contact-form">
                         <div class="label-box">Contact Us</div>
                         <h2 class="heading">Get In Touch</h2>
-                        <form>
+                        <form method="POST" action="{{ route('contact.send') }}">
+                            @csrf
                             <div class="row">
-                                <!-- First Name -->
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="First Name" required>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name"
+                                        required>
                                 </div>
-                                <!-- Last Name -->
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Last Name" required>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                        required>
                                 </div>
                             </div>
-                            <!-- Email -->
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                             </div>
-                            <!-- Phone -->
                             <div class="mb-3">
-                                <input type="tel" class="form-control" placeholder="Your Phone" required>
+                                <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
                             </div>
-                            <!-- Message -->
                             <div class="mb-4">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
                             </div>
-                            <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary">SUBMIT FORM</button>
                         </form>
+
                     </div>
                 </div>
 

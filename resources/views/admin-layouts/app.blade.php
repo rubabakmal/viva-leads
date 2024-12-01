@@ -66,6 +66,10 @@
             margin: 0 5px;
             /* Adjust spacing between buttons */
         }
+
+        .text-primary {
+            color: #33A046 !important;
+        }
     </style>
 </head>
 
