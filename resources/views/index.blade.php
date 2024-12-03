@@ -35,7 +35,8 @@
                     <h3 class="title">Easy Steps to <br> Improve Your Home</h3>
                 </div>
                 <div class="col-md-6">
-                    <p>At Viva Leads, we simplify your home improvement projects into easy and manageable steps. First, get
+                    <p class="how-it-works-para">At Viva Leads, we simplify your home improvement projects into easy and
+                        manageable steps. First, get
                         in touch with us to discuss your needs. Our team will then connect you with top-rated professionals
                         in roofing, solar, windows, bathrooms, and kitchens. Finally, sit back and watch as your home
                         transformation becomes a reality with our reliable and efficient services.</p>
@@ -43,7 +44,7 @@
             </div>
 
             <!-- Card Section -->
-            <div class="row mt-4">
+            <div class="row mt-4 mb-5">
                 <div class="col-md-4">
                     <div class="card info-box roofing">
                         <div class="card-body info-box-body">
