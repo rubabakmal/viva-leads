@@ -51,6 +51,9 @@
 
 
                      <li class="nav-item"><span class="dot"></span></li>
+                     <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
+                     <li class="nav-item"><span class="dot"></span></li>
+
                      <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
                      <li class="nav-item">
                          <span class="navbar-text d-flex d-lg-none">

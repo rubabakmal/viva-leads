@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -18,11 +19,14 @@ Route::middleware('auth')->group(function () {
 
 
     Route::prefix('adminservices')->name('adminservices.')->group(function () {
-        Route::get('/', [ServiceController::class, 'show'])->name('index'); // adminservices.index
+        Route::get('/', [ServiceController::class, 'show'])->name('index');
         Route::post('/store', [ServiceController::class, 'store'])->name('store');
         Route::patch('/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])->name('toggleStatus');
         Route::put('/{service}', [ServiceController::class, 'update'])->name('update');
         Route::delete('/{service}', [ServiceController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('blogs')->name('blogs.')->group(function () {
+        Route::get('/',  [BlogController::class, 'show'])->name('index');
     });
 
     Route::get('/dashboard', function () {

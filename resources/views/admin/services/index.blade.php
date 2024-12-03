@@ -1,4 +1,5 @@
 @extends('admin-layouts.app')
+
 @section('content')
     <!-- Content Start -->
     @if (session('success'))
@@ -10,24 +11,23 @@
 
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
-            <div class="col-sm-12 col-xl-12">
+            <div class="col-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h6>Manage Services</h6>
-                        <!-- Add Services Button -->
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addServiceModal">
                             Add Service
                         </button>
                     </div>
 
-                    <!-- Responsive Table -->
-                    <div class="table-responsive">
-                        <table id="servicesTable" class="table table-bordered table-hover">
+                    <!-- Full-height table container -->
+                    <div class="table-responsive" style="height: calc(100vh - 200px); overflow-y: auto;">
+                        <table id="servicesTable" class="table table-bordered table-hover w-100">
                             <thead class="table-secondary">
                                 <tr>
                                     <th>#</th>
                                     <th>Service</th>
-                                    <th>Description</th>
+                                    <th>Expertise</th>
                                     <th>Image</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $service->service_name }}</td>
-                                        <td>{{ $service->description }}</td>
+                                        <td>{{ Str::limit($service->expertise, 50, '...') }}</td>
                                         <td>
                                             @if ($service->image)
                                                 <img src="{{ asset('storage/' . $service->image) }}" alt="Service Image"
@@ -66,33 +66,40 @@
                                                                 {{ $service->status === 'active' ? 'Mark as Not Active' : 'Mark as Active' }}
                                                             </button>
                                                         </form>
-
                                                     </li>
                                                 </ul>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <!-- Edit Button -->
-                                                <button class="btn btn-sm p-0 mx-1" data-bs-toggle="modal"
-                                                    data-bs-target="#editServiceModal{{ $service->id }}">
-                                                    <i class="bi bi-pencil-square"
-                                                        style="color: #33A046; font-size: 1.2rem;"></i>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <!-- View Icon -->
+
+                                                <a href="{{ route('services.show', $service->id) }}"
+                                                    class="icon-btn text-info" title="view">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+
+                                                <!-- Edit Icon -->
+                                                <button class="icon-btn text-success" data-bs-toggle="modal"
+                                                    data-bs-target="#editServiceModal{{ $service->id }}" title="Edit">
+                                                    <i class="bi bi-pencil-square"></i>
                                                 </button>
 
-                                                <!-- Delete Button -->
+                                                <!-- Delete Icon -->
                                                 <form action="{{ route('adminservices.destroy', $service) }}"
                                                     method="POST"
                                                     onsubmit="return confirm('Are you sure you want to delete this service?');"
-                                                    class="m-0">
+                                                    class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm p-0 mx-1">
-                                                        <i class="bi bi-trash" style="color: red; font-size: 1.2rem;"></i>
+                                                    <button type="submit" class="icon-btn text-danger" title="Delete">
+                                                        <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>
                                             </div>
                                         </td>
+
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -102,6 +109,9 @@
             </div>
         </div>
     </div>
+
+
+
     <!-- Content End -->
 
     <!-- Add Service Modal -->
@@ -121,11 +131,13 @@
                             <input type="text" class="form-control" id="serviceName" name="service_name"
                                 placeholder="Enter service name" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="serviceDescription" class="form-label">Service Description</label>
-                            <textarea class="form-control" id="serviceDescription" name="description" rows="3"
-                                placeholder="Enter service description" required></textarea>
+                            <label for="serviceExpertise" class="form-label">Expertise</label>
+                            <input type="text" class="form-control" id="serviceExpertise" name="expertise"
+                                placeholder="Enter expertise (optional)">
                         </div>
+
                         <div class="mb-3">
                             <label for="serviceImage" class="form-label">Service Image</label>
                             <input type="file" class="form-control" id="serviceImage" name="image" accept="image/*">
@@ -160,12 +172,10 @@
                                     name="service_name" value="{{ $service->service_name }}" required>
                             </div>
 
-                            <!-- Service Description -->
                             <div class="mb-3">
-                                <label for="serviceDescription{{ $service->id }}" class="form-label">Service
-                                    Description</label>
-                                <textarea class="form-control" id="serviceDescription{{ $service->id }}" name="description" rows="3"
-                                    required>{{ $service->description }}</textarea>
+                                <label for="serviceExpertise{{ $service->id }}" class="form-label">Expertise</label>
+                                <input type="text" class="form-control" id="serviceExpertise{{ $service->id }}"
+                                    name="expertise" value="{{ $service->expertise }}" placeholder="Enter expertise">
                             </div>
 
                             <!-- Service Image -->
@@ -198,9 +208,11 @@
         $(document).ready(function() {
             $('#servicesTable').DataTable({
                 responsive: true,
+                autoWidth: false,
                 paging: true,
                 searching: true,
-                info: true
+                info: true,
+                lengthMenu: [5, 10, 25, 50], // Adjust page size options
             });
         });
     </script>
