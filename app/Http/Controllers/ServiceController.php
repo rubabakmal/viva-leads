@@ -37,8 +37,8 @@ class ServiceController extends Controller
     {
         $request->validate([
             'service_name' => 'required|string|max:255',
-            'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'expertise' => 'nullable|string',
         ]);
 
         $imagePath = null;
@@ -48,12 +48,13 @@ class ServiceController extends Controller
 
         Service::create([
             'service_name' => $request->service_name,
-            'description' => $request->description,
             'image' => $imagePath,
+            'expertise' => $request->expertise,
         ]);
 
         return redirect()->route('adminservices.index')->with('success', 'Service added successfully!');
     }
+
 
     /**
      * Toggle Service Status
@@ -81,13 +82,13 @@ class ServiceController extends Controller
     {
         $request->validate([
             'service_name' => 'required|string|max:255',
-            'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'expertise' => 'nullable|string',
         ]);
 
         if ($request->hasFile('image')) {
             if ($service->image) {
-                Storage::delete('public/' . $service->image); // Delete the old image
+                Storage::delete('public/' . $service->image);
             }
             $imagePath = $request->file('image')->store('services', 'public');
             $service->image = $imagePath;
@@ -95,12 +96,13 @@ class ServiceController extends Controller
 
         $service->update([
             'service_name' => $request->service_name,
-            'description' => $request->description,
             'image' => $service->image,
+            'expertise' => $request->expertise,
         ]);
 
         return redirect()->route('adminservices.index')->with('success', 'Service updated successfully!');
     }
+
 
     /**
      * Delete a Service
