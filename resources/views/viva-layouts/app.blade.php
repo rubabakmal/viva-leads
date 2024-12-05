@@ -17,17 +17,92 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">
+    <style>
+        .blog-header {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .default-header {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        /* Header styles for the blog page when scrolled */
+        body.blog-page .header.scrolled {
+            background-color: white;
+            color: black;
+        }
+
+        /* Ensure nav links remain visible */
+        body.blog-page .header.scrolled .nav-link {
+            color: black !important;
+        }
+
+        /* Adjust the logo if it becomes invisible (optional) */
+        /* Default header styles for logo (black logo for white background) */
+        .header .navbar-brand img {
+            filter: none;
+            /* Default: no filter */
+            transition: filter 0.3s ease;
+            /* Smooth transition */
+        }
+
+        /* When scrolled on blog page, logo changes color for better visibility */
+        body.blog-page .header.scrolled .navbar-brand img {
+            filter: none;
+            /* Restore default logo color for white background */
+        }
+
+        /* Specific for blog pages (white logo on the green/dark background) */
+        body.blog-page .header .navbar-brand img {
+            filter: brightness(0) invert(1);
+            /* White logo for dark background */
+        }
+
+        /* Default .span-num color */
+        .navbar-text .span-num {
+            color: black;
+            /* Default black color */
+            transition: color 0.3s ease;
+            /* Smooth transition */
+        }
+
+        /* Change to white color on the blog page */
+        body.blog-page .navbar-text .span-num {
+            color: white;
+            /* White color specifically for blog page */
+        }
+
+        body.blog-page .navbar-text {
+            color: white;
+            /* White color specifically for blog page */
+        }
+
+        /* Change to black color when scrolled */
+        body.blog-page .header.scrolled .navbar-text .span-num {
+            color: black;
+            /* Change to black on scroll */
+        }
+
+        body.blog-page .header.scrolled .navbar-text {
+            color: black;
+            /* Change to black on scroll */
+        }
+    </style>
 </head>
 
 <body>
 
-    @include('viva-layouts.header')
+    <body class="@yield('body-class', 'default-page')">
+        @include('viva-layouts.header')
+        <div class="main">
+            @yield('content')
+        </div>
+        @include('viva-layouts.footer')
+    </body>
 
-    <div class="main">
-        @yield('content')
-    </div>
-
-    @include('viva-layouts.footer')
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

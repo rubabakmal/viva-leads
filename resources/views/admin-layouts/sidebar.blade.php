@@ -29,6 +29,11 @@
                     class="fa fa-tachometer-alt me-2"></i>Services</a>
         </div>
         <div class="navbar-nav w-100">
+            <a href="{{ route('adminblogs.index') }}" class="nav-item nav-link "><i
+                    class="fa fa-tachometer-alt me-2"></i>Blogs</a>
+        </div>
+
+        <div class="navbar-nav w-100">
             <a href="" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Emails</a>
         </div>
     </nav>
