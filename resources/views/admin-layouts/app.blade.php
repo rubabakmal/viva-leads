@@ -55,7 +55,6 @@
         .btn-primary:hover {
             background-color: white;
             border-color: #33A046;
-            color: #33A046;
         }
 
         .nav-item {

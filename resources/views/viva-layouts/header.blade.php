@@ -3,6 +3,24 @@
      $services = App\Models\Service::where('status', 'active')->get(); // Fetch only active services
 
  @endphp
+ <style>
+     .header-blog {
+         /* Custom color for the blog header */
+         color: white;
+         /* Adjust text color if needed */
+         /* Optional shadow */
+     }
+
+     .header-blog .nav-link {
+         color: white !important;
+         /* Ensure nav links are visible */
+     }
+
+     .header-blog .navbar-brand img {
+         filter: brightness(0) invert(1);
+         /* Adjust logo for contrast, if needed */
+     }
+ </style>
  <div class="top-bar" id="topBar">
      <div class="container d-flex justify-content-between align-items-center">
          <div class="topbar-widget tb-social">
@@ -16,9 +34,8 @@
          </div>
      </div>
  </div>
-
  <!-- Header -->
- <header id="header" class="header">
+ <header id="header" class="header {{ request()->is('blogs*') ? 'header-blog' : '' }}">
      <div class="container">
          <nav class="navbar navbar-expand-lg">
              <a class="navbar-brand" href="#">

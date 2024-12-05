@@ -511,6 +511,7 @@ img {
 
 .btn-primary:hover {
     background-color: #4c9a2a;
+    color: white;
 }
 
 .btn-primary:focus {
@@ -694,7 +695,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-
 
 .hero {
     padding: 97px 0 !important;
