@@ -90,6 +90,37 @@
             color: black;
             /* Change to black on scroll */
         }
+
+        /* General Blog Header (Desktop) */
+
+
+        /* Mobile-Specific Header Background */
+        @media (max-width: 551px) {
+
+            /* For smaller screens */
+
+            .header-blog .nav-link {
+                color: black;
+            }
+        }
+
+        /* Scrolled Header for Blog Page */
+        .header-blog.scrolled {
+            background-color: white !important;
+            /* White on scroll for both mobile and desktop */
+            color: black;
+        }
+
+        /* Nav Links and Text When Scrolled */
+        .header-blog.scrolled .nav-link,
+        .header-blog.scrolled .navbar-text .span-num {
+            color: black !important;
+        }
+
+        /* Reset Logo for Scrolled State */
+        .header-blog.scrolled .navbar-brand img {
+            filter: none;
+        }
     </style>
 </head>
 

@@ -195,3 +195,10 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
+@media (max-width: 551px) {
+    /* For smaller screens */
+
+    .header-blog .nav-link {
+        color: black;
+    }
+}

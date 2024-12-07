@@ -10,13 +10,27 @@ class BlogController extends Controller
 {
     public function show()
     {
-        return view('blog');
+        // Fetch all blogs from the database
+        $blogs = Blog::orderBy('created_at', 'desc')->get();
+        $blogs = Blog::withCount('comments')->get(); // Fetch blogs with comment counts
+
+        // Pass the blogs data to the view
+        return view('blog', compact('blogs'));
     }
 
-    public function Blogdetail()
+    public function Blogdetail($id)
     {
-        return view('blog-details');
+        // Find the blog by ID
+        $blog = Blog::findOrFail($id); // Throws a 404 if the blog is not found
+
+        // Fetch recent blogs for the sidebar
+        $recentBlogs = Blog::orderBy('created_at', 'desc')->take(5)->get();
+
+        // Pass the blog and recent blogs to the view
+        return view('blog-details', compact('blog', 'recentBlogs'));
     }
+
+
 
     public function index()
     {
@@ -78,7 +92,7 @@ class BlogController extends Controller
             $blog->save();
 
             // Redirect with success message
-            return redirect()->route('blogs.index')->with('success', 'Blog updated successfully.');
+            return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully.');
         } catch (\Exception $e) {
             // Log error for debugging
             \Log::error('Blog update failed: ' . $e->getMessage());
@@ -91,6 +105,6 @@ class BlogController extends Controller
     {
         $blog->delete();
 
-        return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully.');
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }
