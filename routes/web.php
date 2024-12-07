@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -19,8 +20,11 @@ Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.
 
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/',  [BlogController::class, 'show'])->name('index');
-    Route::get('/blog-detail',  [BlogController::class, 'Blogdetail'])->name('blog_detail');
+    Route::get('/blog-detail/{id}', [BlogController::class, 'Blogdetail'])->name('blog_detail');
 });
+
+
+Route::post('/blog-detail/{id}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 Route::middleware('auth')->group(function () {
 
@@ -35,14 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('adminblogs')->name('adminblogs.')->group(function () {
         Route::get('/',  [BlogController::class, 'index'])->name('index');
         Route::post('/blogs/store', [BlogController::class, 'store'])->name('store');
-        // Blog Edit Route
         Route::get('/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('edit');
-
-        // Blog Update Route
         Route::put('/blogs/{blog}', [BlogController::class, 'update'])->name('update');
-
-        // Blog Destroy Route
         Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('admincomments')->name('admincomments.')->group(function () {
+        Route::get('/',  [CommentController::class, 'index'])->name('index');
+        Route::delete('/admin/comments/{id}', [CommentController::class, 'destroy'])->name('destroy');
     });
     Route::get('/dashboard', function () {
         return view('admindashboard');

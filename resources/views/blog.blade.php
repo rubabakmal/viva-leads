@@ -26,28 +26,39 @@
 
     <div class="blog-cards container mt-5">
         <h2 class="heading">Our Latest Blog</h2>
-        <p>Related to: <span class="services">Kitchen</span></p>
+        <p>Related to: <span class="services">Latest Blogs</span></p>
         <div class="row">
-            @for ($i = 1; $i <= 3; $i++)
-                {{-- Repeat for the number of cards --}}
+            @foreach ($blogs as $blog)
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card">
-                        <img src="{{ asset('assets/imgs/pexels-pixabay-257736.jpg') }}" class="card-img-top"
-                            alt="Blog Image">
+                        <!-- Blog Image -->
+                        <img src="{{ $blog->image ? asset('storage/' . $blog->image) : asset('assets/imgs/default-blog.jpg') }}"
+                            class="card-img-top" alt="{{ $blog->title }}">
+
                         <div class="card-body">
+                            <!-- Meta Info -->
                             <div class="card-meta mb-2">
-                                <span>5 Comments</span> | <span>28th January</span>
+                                <span>{{ $blog->comments_count }} Comments</span> |
+                                <span>{{ $blog->created_at->format('d M Y') }}</span>
                             </div>
-                            <h5 class="card-title">All test cost 25% in always in our laboratory</h5>
+
+                            <!-- Title -->
+                            <h5 class="card-title">{{ $blog->title }}</h5>
+
+                            <!-- Content -->
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blanditiis aliquid architecto
-                                facere...
+                                {{ Str::limit($blog->content, 100) }}
                             </p>
-                            <a href="{{ route('blogs.blog_detail') }}" class="btn btn-primary">Read More</a>
+
+                            <!-- Read More Button -->
+                            <a href="{{ route('blogs.blog_detail', ['id' => $blog->id]) }}" class="btn btn-primary">Read
+                                More</a>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
+
+
 @endsection
