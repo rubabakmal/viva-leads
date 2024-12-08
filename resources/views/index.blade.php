@@ -1,5 +1,25 @@
 @extends('viva-layouts.app')
 @section('content')
+    @php
+
+        $services = App\Models\Service::all();
+        $iconMappings = [
+            'Plumbing and Heating' => 'fas fa-toolbox',
+            'Joinery' => 'fas fa-screwdriver-wrench',
+            'Kitchen' => 'fas fa-utensils',
+            'Bathrooms' => 'fas fa-bath',
+            'PVC Windows and Doors' => 'fas fa-door-closed',
+            'Electrics Service' => 'fas fa-bolt',
+            'CCTV' => 'fas fa-video',
+            'Brick Work' => 'fas fa-cube',
+            'Plastering' => 'fas fa-paint-roller',
+            'Carpet and Flooring' => 'fas fa-ruler-combined',
+        ];
+        foreach ($services as $service) {
+            $service->icon = $iconMappings[$service->service_name] ?? 'fas fa-cogs';
+        }
+
+    @endphp
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -13,17 +33,16 @@
             <div class="content-box">
                 <h1>Transform Your Home with Expert Services</h1>
                 <div class="service-icon">
-                    <a href="#"><i class="fas fa-hammer"></i> Roofing</a>
-                    <a href="#"><i class="fas fa-solar-panel"></i> Solar</a>
-                    <a href="#"><i class="fas fa-window-maximize"></i> Windows</a>
-                    <a href="#"><i class="fas fa-bath"></i> Bathroom</a>
-                    <a href="#"><i class="fas fa-utensils"></i> Kitchen</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
+                    @foreach ($services as $service)
+                        <a href="{{ route('services.show', $service->id) }}">
+                            <i class="{{ $iconMappings[$service->service_name] ?? 'fas fa-cogs' }}"></i>
+                            {{ $service->service_name }}
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
+
     </section>
 
     <section class="how-it-works">
@@ -116,7 +135,7 @@
     </section>
 
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="container">
             <div class="row">
                 <!-- Left Form Section -->

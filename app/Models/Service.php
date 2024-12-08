@@ -18,4 +18,9 @@ class Service extends Model
         'expertise',
         'status',
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

@@ -17,8 +17,35 @@
      }
 
      .header-blog .navbar-brand img {
-         filter: brightness(0) invert(1);
+         filter: brightness(0) invert(0);
          /* Adjust logo for contrast, if needed */
+     }
+
+     @media (max-width:551px) {
+         .header-blog {
+             /* Custom color for the blog header */
+             color: black;
+             /* Adjust text color if needed */
+             /* Optional shadow */
+         }
+
+         .header-blog .nav-link {
+             color: black !important;
+             /* Ensure nav links are visible */
+         }
+
+         body.blog-page .header .navbar-brand img {
+             filter: brightness(0) invert(0);
+         }
+
+         body.blog-page .navbar-text .span-num {
+             color: black;
+         }
+
+         body.blog-page .navbar-text {
+             color: black;
+         }
+
      }
  </style>
  <div class="top-bar" id="topBar">
@@ -29,8 +56,8 @@
              <a href="#"><i class="fab fa-instagram"></i></a>
          </div>
          <div class="topbar-widget tb-social">
-             <a href="#">Privacy Policy</a>
-             <a href="#">Terms & Condition</a>
+             <a href="{{ route('privacy') }}">Privacy Policy</a>
+             <a href="{{ route('terms') }}">Terms & Condition</a>
          </div>
      </div>
  </div>
@@ -38,7 +65,7 @@
  <header id="header" class="header {{ request()->is('blogs*') ? 'header-blog' : '' }}">
      <div class="container">
          <nav class="navbar navbar-expand-lg">
-             <a class="navbar-brand" href="#">
+             <a class="navbar-brand" href="{{ route('index') }}">
                  <img src="{{ asset('assets/logo-green.png') }}" alt="Logo">
              </a>
              <div class="d-flex">
@@ -71,7 +98,7 @@
                      <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
                      <li class="nav-item"><span class="dot"></span></li>
 
-                     <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
+                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
                      <li class="nav-item">
                          <span class="navbar-text d-flex d-lg-none">
                              <i class="fa-solid fa-phone"></i>
@@ -122,6 +149,32 @@
          dropdowns.forEach(function(dropdown) {
              dropdown.addEventListener('click', function() {
                  this.classList.toggle('show'); // Toggle dropdown on click
+             });
+         });
+     });
+ </script>
+
+ <script>
+     document.addEventListener("DOMContentLoaded", function() {
+         // Select all anchor links with hashes
+         const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+         smoothScrollLinks.forEach(function(link) {
+             link.addEventListener("click", function(e) {
+                 e.preventDefault(); // Prevent default anchor behavior
+
+                 // Get the target element
+                 const targetId = this.getAttribute("href").substring(1);
+                 const targetElement = document.getElementById(targetId);
+
+                 if (targetElement) {
+                     // Scroll to the target element
+                     window.scrollTo({
+                         top: targetElement.offsetTop -
+                             100, // Adjust the offset (header height)
+                         behavior: "smooth", // Smooth scroll
+                     });
+                 }
              });
          });
      });

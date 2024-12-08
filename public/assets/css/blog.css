@@ -201,4 +201,8 @@
     .header-blog .nav-link {
         color: black;
     }
+
+    .header-blog .navbar-brand img {
+        filter: brightness(0) invert(0); /* Set logo to black */
+    }
 }

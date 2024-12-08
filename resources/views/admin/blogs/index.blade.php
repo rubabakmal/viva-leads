@@ -28,6 +28,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
+                                    <th>Related Service</th>
                                     <th>Content</th>
                                     <th>Image</th>
                                     <th>Actions</th>
@@ -38,6 +39,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $blog->title }}</td>
+                                        <td>{{ $blog->service->service_name ?? 'No service associated' }}</td>
                                         <td>{{ Str::limit($blog->content, 50) }}</td>
                                         <td>
                                             @if ($blog->image)
@@ -67,7 +69,6 @@
                                                 </form>
                                             </div>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -100,9 +101,20 @@
                             <textarea class="form-control" id="blogContent" name="content" rows="4" placeholder="Enter blog content" required></textarea>
                         </div>
                         <div class="mb-3">
+                            <label for="service" class="form-label">Related Service</label>
+                            <select name="service_id" id="service" class="form-control" required>
+                                <option value="" selected disabled>Select a Service</option>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->service_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="blogImage" class="form-label">Blog Image</label>
                             <input type="file" class="form-control" id="blogImage" name="image" accept="image/*">
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save Blog</button>
                     </form>
                 </div>
@@ -138,6 +150,22 @@
                                 <label for="blogContent" class="form-label">Content</label>
                                 <textarea class="form-control" id="blogContent" name="content" rows="4" required>{{ $blog->content }}</textarea>
                             </div>
+
+                            <!-- Service -->
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Related Service</label>
+                                <select name="service_id" id="service" class="form-control" required>
+                                    <option value="" disabled>Select a Service</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->id }}"
+                                            {{ $service->id == $blog->service_id ? 'selected' : '' }}>
+                                            {{ $service->service_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
 
                             <!-- Image -->
                             <div class="mb-3">

@@ -1,5 +1,7 @@
 @extends('viva-layouts.app')
 @section('body-class', 'blog-page')
+@section('title', 'Blog Details')
+
 @php
     function get_gravatar($email, $size = 50, $default = 'mp', $rating = 'g')
     {

@@ -11,6 +11,12 @@ use App\Http\Controllers\ServiceController;
 Route::get('/', function () {
     return view('index');
 })->name('index');
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
 
 
 Route::get('services', [ServiceController::class, 'index'])->name('services');
