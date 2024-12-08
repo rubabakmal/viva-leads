@@ -58,9 +58,9 @@
                 </div><!--- END COL -->
                 <div class="col-lg-6 col-sm-6 col-xs-6 social_profile">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f" style="padding-top: 10px"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" style="padding-top: 10px"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram" style="padding-top: 10px"></i></a></li>
                     </ul>
                 </div>
             </div><!--- END ROW -->
