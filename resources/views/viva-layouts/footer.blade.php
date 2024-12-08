@@ -56,16 +56,16 @@
 
         <div class="border-bottom"></div>
 
-        <div class="container px-5" style="padding-bottom: 2rem;">
+        <div class="container px-5 mb-3">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-xs-6">
                     <p class="copyright">© Copyright 2024 - <a href="#">Viva Leads</a></p>
                 </div><!--- END COL -->
                 <div class="col-lg-6 col-sm-6 col-xs-6 social_profile">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f" style="padding-top: 10px"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" style="padding-top: 10px"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram" style="padding-top: 10px"></i></a></li>
                     </ul>
                 </div>
             </div><!--- END ROW -->

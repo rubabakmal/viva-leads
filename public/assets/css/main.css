@@ -157,7 +157,7 @@ body {
         justify-content: center;
     }
     .navbar-text {
-        text-align: center;
+        /* text-align: center; */
         margin-top: 10px;
     }
 
@@ -582,7 +582,9 @@ img {
     position: relative;
     text-align: left;
     padding: 70px 15px;
+
     height: 100%;
+
     transition: all 0.3s ease;
     overflow: hidden;
 }
@@ -848,7 +850,7 @@ hr {
 }
 
 .copyright {
-    margin-top: 40px;
+    margin-top: 25px;
     margin-bottom: 0;
     color: #656974;
     font-size: 15px;
