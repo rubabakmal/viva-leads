@@ -582,9 +582,9 @@ img {
     position: relative;
     text-align: left;
     padding: 70px 15px;
-
     transition: all 0.3s ease;
     overflow: hidden;
+    height: 20rem !important;
 }
 
 .feature-box .text {
