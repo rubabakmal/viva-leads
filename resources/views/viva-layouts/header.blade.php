@@ -74,7 +74,7 @@
                      <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
                      <li class="nav-item">
                          <span class="navbar-text d-flex d-lg-none">
-                             <i class="fa-solid fa-phone"></i>
+                             <i class="fa-solid fa-phone fa__phone"></i>
                              <div>
                                  <span>Need Help?</span><br>
                                  <span class="span-num">1200 300 9000</span>
