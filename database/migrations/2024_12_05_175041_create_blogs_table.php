@@ -14,11 +14,11 @@ class CreateBlogsTable extends Migration
     public function up()
     {
         Schema::create('blogs', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing ID
-            $table->string('title'); // Blog title
-            $table->text('content'); // Blog content
-            $table->string('image')->nullable(); // Blog image URL (nullable)
-            $table->timestamps(); // Created at & Updated at timestamps
+            $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

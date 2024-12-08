@@ -1,3 +1,8 @@
+    @php
+        $footerServices = App\Models\Service::where('status', 'active')->get();
+    @endphp
+
+
     <div class="border-bottom"></div>
     <div class="footer" style="margin-top: 7rem;">
         <div class="container px-5 mb-5">
@@ -7,31 +12,31 @@
                     <div class="single_footer">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ route('index') }}">Home</a></li>
+                            <li><a href="{{ route('blogs.index') }}">Blogs</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
                         </ul>
                     </div>
                 </div><!--- END COL -->
+                <!-- Services -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="single_footer">
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="#">Roofing</a></li>
-                            <li><a href="#">Solar</a></li>
-                            <li><a href="#">Windows</a></li>
-                            <li><a href="#">Bathroom</a></li>
-                            <li><a href="#">Kitchen</a></li>
-                            <li><a href="#">Motor Vehicle Accident</a></li>
+                            @foreach ($footerServices as $service)
+                                <li><a
+                                        href="{{ route('services.show', $service->id) }}">{{ $service->service_name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
-                </div><!--- END COL -->
+                </div><!-- END COL -->
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="single_footer single_footer_address">
                         <h4>Term Links</h4>
                         <ul>
-                            <li><a href="#">Terms & Condition</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Marketing Partners</a></li>
+                            <li><a href="{{ route('terms') }}">Terms & Condition</a></li>
+                            <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div><!--- END COL -->

@@ -10,11 +10,17 @@ class Blog extends Model
         'title',
         'content',
         'image',
+        'service_id',
 
     ];
 
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 }
