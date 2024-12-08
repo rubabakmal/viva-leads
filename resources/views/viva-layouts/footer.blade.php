@@ -51,7 +51,7 @@
 
         <div class="border-bottom"></div>
 
-        <div class="container px-5">
+        <div class="container px-5 mb-3">
             <div class="row">
                 <div class="col-lg-6 col-sm-6 col-xs-6">
                     <p class="copyright">© Copyright 2024 - <a href="#">Viva Leads</a></p>
