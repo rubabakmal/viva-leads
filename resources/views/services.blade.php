@@ -1,4 +1,5 @@
 @extends('viva-layouts.app')
+@section('title', 'Services')
 
 @section('content')
     <div class="service-wrap">
