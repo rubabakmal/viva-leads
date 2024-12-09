@@ -12,19 +12,40 @@
                     class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                 </div>
             </div>
-            <div class="ms-3">
-                <h6 class="mb-0">
-                    <!-- Display the logged-in user's name -->
-                    {{ Auth::user()->name ?? 'Guest' }}
-                </h6>
-                <span>Admin</span>
-            </div>
+            <a href="{{ route('profile.edit') }}">
+                <div class="ms-3">
+                    <h6 class="mb-0">
+                        <!-- Display the logged-in user's name -->
+                        {{ Auth::user()->name ?? 'Guest' }}
+                    </h6>
+                    <span>Admin</span>
+                </div>
+            </a>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="nav-item nav-link active">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Services</a>
+            <a href="{{ route('adminservices.index') }}" class="nav-item nav-link">
+                <i class="fas fa-tools me-2"></i>Services
+            </a>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="{{ route('adminblogs.index') }}" class="nav-item nav-link">
+                <i class="fas fa-blog me-2"></i>Blogs
+            </a>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="{{ route('admincomments.index') }}" class="nav-item nav-link">
+                <i class="fas fa-comments me-2"></i>Comments
+            </a>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="" class="nav-item nav-link">
+                <i class="fas fa-envelope me-2"></i>Emails
+            </a>
         </div>
     </nav>
 </div>

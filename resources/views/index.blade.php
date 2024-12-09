@@ -1,6 +1,30 @@
 @extends('viva-layouts.app')
 @section('content')
-    <!-- Hero Section -->
+    @php
+
+        $services = App\Models\Service::all();
+        $iconMappings = [
+            'Plumbing and Heating' => 'fas fa-toolbox',
+            'Joinery' => 'fas fa-screwdriver-wrench',
+            'Kitchen' => 'fas fa-utensils',
+            'Bathrooms' => 'fas fa-bath',
+            'PVC Windows and Doors' => 'fas fa-door-closed',
+            'Electrics Service' => 'fas fa-bolt',
+            'CCTV' => 'fas fa-video',
+            'Brick Work' => 'fas fa-cube',
+            'Plastering' => 'fas fa-paint-roller',
+            'Carpet and Flooring' => 'fas fa-ruler-combined',
+        ];
+        foreach ($services as $service) {
+            $service->icon = $iconMappings[$service->service_name] ?? 'fas fa-cogs';
+        }
+
+    @endphp
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <section class="hero">
         <div class="col-md-6">
 
@@ -9,19 +33,17 @@
             <div class="content-box">
                 <h1>Transform Your Home with Expert Services</h1>
                 <div class="service-icon">
-                    <a href="#"><i class="fas fa-hammer"></i> Roofing</a>
-                    <a href="#"><i class="fas fa-solar-panel"></i> Solar</a>
-                    <a href="#"><i class="fas fa-window-maximize"></i> Windows</a>
-                    <a href="#"><i class="fas fa-bath"></i> Bathroom</a>
-                    <a href="#"><i class="fas fa-utensils"></i> Kitchen</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
-                    <a href="#"><i class="fas fa-car"></i> MVA</a>
+                    @foreach ($services as $service)
+                        <a href="{{ route('services.show', $service->id) }}">
+                            <i class="{{ $iconMappings[$service->service_name] ?? 'fas fa-cogs' }}"></i>
+                            {{ $service->service_name }}
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </section>
 
+    </section>
 
     <section class="how-it-works">
         <div class="container">
@@ -32,7 +54,8 @@
                     <h3 class="title">Easy Steps to <br> Improve Your Home</h3>
                 </div>
                 <div class="col-md-6">
-                    <p>At Viva Leads, we simplify your home improvement projects into easy and manageable steps. First, get
+                    <p class="how-it-works-para">At Viva Leads, we simplify your home improvement projects into easy and
+                        manageable steps. First, get
                         in touch with us to discuss your needs. Our team will then connect you with top-rated professionals
                         in roofing, solar, windows, bathrooms, and kitchens. Finally, sit back and watch as your home
                         transformation becomes a reality with our reliable and efficient services.</p>
@@ -40,10 +63,10 @@
             </div>
 
             <!-- Card Section -->
-            <div class="row mt-4">
+            <div class="row mt-4 mb-5">
                 <div class="col-md-4">
                     <div class="card info-box roofing">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Roofing Services</h3>
                             <p>Protect your home with our top-notch roofing services. We use high-quality materials and
                                 skilled
@@ -53,7 +76,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card info-box solar">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Solar Panel Installation</h3>
                             <p>Go green with our solar panel installation services. Save on energy bills and reduce your
                                 carbon
@@ -63,7 +86,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card info-box windows">
-                        <div class="card-body">
+                        <div class="card-body info-box-body">
                             <h3><i class="fas fa-check-circle"></i> Windows</h3>
                             <p>Enhance your home’s energy efficiency and curb appeal with our window replacement services.
                                 Choose from a variety of styles and materials to fit your needs.</p>
@@ -82,7 +105,7 @@
             </div>
 
             <div class="row whole-text" style="background-size: cover;">
-                <div class="container inner-padding" style="background-size: cover;">
+                <div class="container" style="background-size: cover;">
                     <div class="content" data-animation="fadeInRight" data-delay="200" style="background-size: cover; ">
                         <div class="label-box">What we do?</div>
                         <h2 class="heading">
@@ -112,7 +135,7 @@
     </section>
 
 
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="container">
             <div class="row">
                 <!-- Left Form Section -->
@@ -120,32 +143,30 @@
                     <div class="contact-form">
                         <div class="label-box">Contact Us</div>
                         <h2 class="heading">Get In Touch</h2>
-                        <form>
+                        <form method="POST" action="{{ route('contact.send') }}">
+                            @csrf
                             <div class="row">
-                                <!-- First Name -->
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="First Name" required>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name"
+                                        required>
                                 </div>
-                                <!-- Last Name -->
                                 <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Last Name" required>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name"
+                                        required>
                                 </div>
                             </div>
-                            <!-- Email -->
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                             </div>
-                            <!-- Phone -->
                             <div class="mb-3">
-                                <input type="tel" class="form-control" placeholder="Your Phone" required>
+                                <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
                             </div>
-                            <!-- Message -->
                             <div class="mb-4">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
                             </div>
-                            <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary">SUBMIT FORM</button>
                         </form>
+
                     </div>
                 </div>
 
@@ -230,8 +251,4 @@
             </div>
         </div>
     </section>
-
-
-
-    <!-- CSS for Styling -->
 @endsection

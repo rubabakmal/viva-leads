@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('assets/logo-green.png') }}" rel="icon">
+    <link rel="shortcut icon" href="{{ asset('assets/imgs/favicon.ico') }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,11 +55,100 @@
         .btn-primary:hover {
             background-color: white;
             border-color: #33A046;
-            color: #33A046;
         }
 
         .nav-item {
             margin-top: 10px;
+        }
+
+        .d-flex.align-items-center button {
+            margin: 0 5px;
+            /* Adjust spacing between buttons */
+        }
+
+        .text-primary {
+            color: #33A046 !important;
+        }
+
+        .table-responsive {
+            height: calc(100vh - 200px);
+            /* Adjust based on navbar and padding */
+            overflow-y: auto;
+            /* Adds vertical scrolling if needed */
+        }
+
+        .table {
+            width: 100% !important;
+            /* Ensures table spans full width */
+            table-layout: auto;
+            /* Flexible column widths */
+        }
+
+        th,
+        td {
+            white-space: nowrap;
+            /* Prevent text wrapping */
+            overflow: hidden;
+            /* Hide overflowing text */
+            text-overflow: ellipsis;
+            /* Add ellipsis for overflowing text */
+        }
+
+
+
+        /* Icon Button Styling */
+        .icon-btn {
+            background: none;
+            /* No background */
+            border: none;
+            /* No border */
+            padding: 0;
+            /* No padding */
+            margin: 0;
+            /* No margin */
+            font-size: 0.90rem;
+            /* Increase icon size */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
+
+        .icon-btn.text-danger {
+            margin-top: 0.2rem;
+            /* Adjust this value to fine-tune alignment */
+        }
+
+        .d-flex.gap-2 {
+            align-items: center;
+            /* Center aligns all icons */
+        }
+
+        .icon-btn.text-danger {
+            align-self: flex-end;
+            /* Moves the trash icon slightly downward */
+        }
+
+        /* Icon Hover Effect */
+        .icon-btn:hover {
+            opacity: 0.8;
+            /* Slight opacity change on hover */
+            transform: scale(1.1);
+            /* Slightly enlarge on hover */
+            transition: all 0.2s ease-in-out;
+            /* Smooth transition */
+        }
+
+        /* Remove Focus Background */
+        .icon-btn:focus {
+            outline: none;
+            /* Remove outline */
+            background: none;
+            /* No background on focus */
+        }
+
+        /* Alignment Fix */
+        .d-flex.gap-2 {
+            align-items: center;
+            /* Vertically align icons */
         }
     </style>
 </head>
@@ -67,11 +156,19 @@
 <body>
 
 
-    @include('admin-layouts.sidebar')
+    <div class="container-xxl position-relative bg-white d-flex p-0">
 
-    <div class="main">
-        @yield('content')
+        @include('admin-layouts.sidebar')
+        <div class="content">
+
+            @include('admin-layouts.header')
+
+            @yield('content')
+        </div>
+
+
     </div>
+
 
 
     <!-- JavaScript Libraries -->

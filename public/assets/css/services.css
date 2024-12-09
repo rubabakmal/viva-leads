@@ -103,11 +103,14 @@ span {
 .submit-btn:hover {
     background-color: #00812f;
 }
-
+.form-container {
+    margin-top: 10rem !important;
+}
 /* Responsive styling */
 @media (max-width: 768px) {
     .form-container {
         flex-direction: column;
+        margin-top: 1rem !important;
     }
 
     .form-left {
