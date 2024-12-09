@@ -22,6 +22,8 @@ Route::get('/terms', function () {
 Route::get('services', [ServiceController::class, 'index'])->name('services');
 Route::get('services/{id}', [ServiceController::class, 'showService'])->name('services.show');
 Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
+Route::post('/storeservice', [ServiceController::class, 'storeservicerequest'])->name('storeservicerequest');
+
 
 
 Route::prefix('blogs')->name('blogs.')->group(function () {

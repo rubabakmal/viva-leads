@@ -14,34 +14,27 @@
                     <h1>{{ $service->service_name }}</h1>
                     <p>{{ $service->description }}</p>
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('storeservicerequest') }}">
                         @csrf
-                        <!-- Name Fields -->
+                        <input type="hidden" name="service_id" value="123">
+
                         <div class="form-group">
-                            <input type="text" name="first_name" placeholder="First Name" required>
-                            <input type="text" name="last_name" placeholder="Last Name" required>
+                            <input type="text" name="name" placeholder="Full Name" required> <!-- Updated name -->
+                            <input type="email" name="email" placeholder="Email" required>
                         </div>
-                        <!-- Address Fields -->
-                        <div class="form-group">
-                            <input type="text" name="address" placeholder="Address" required>
-                            <input type="text" name="city" placeholder="City" required>
-                        </div>
-                        <!-- State and Zip Code -->
-                        <div class="form-group">
-                            <select name="state" required>
-                                <option value="" disabled selected>Select State</option>
-                                <option value="CA">California</option>
-                                <option value="TX">Texas</option>
-                                <option value="NY">New York</option>
-                                <option value="FL">Florida</option>
-                            </select>
-                            <input type="text" name="zip_code" placeholder="Zip Code" required>
-                        </div>
+
                         <!-- Contact Details -->
                         <div class="form-group">
                             <input type="tel" name="phone_number" placeholder="Phone Number" required>
-                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="text" name="address" placeholder="Address">
+
                         </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <input type="text" name="description" placeholder="Describe your requirement">
+                        </div>
+
                         <!-- Terms Checkbox -->
                         <label>
                             <input type="checkbox" name="terms" required>
