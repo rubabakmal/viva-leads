@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\ServiceRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
@@ -116,5 +117,29 @@ class ServiceController extends Controller
         $service->delete();
 
         return redirect()->route('adminservices.index')->with('success', 'Service deleted successfully!');
+    }
+
+    public function storeservicerequest(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone_number' => 'required|string',
+            'address' => 'required|string',
+            'service_id' => 'required|integer',
+            'description' => 'nullable|string',
+        ]);
+
+        ServiceRequest::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'service_id' => $request->service_id,
+            'service_id' => $request->service_id,
+            'description' => $request->description,
+        ]);
+
+        return back()->with('success', 'Request submitted successfully!');
     }
 }
